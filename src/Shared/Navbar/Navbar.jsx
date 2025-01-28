@@ -6,16 +6,16 @@ import auth from "../../../firebase.config";
 const Navbar = () => {
   const navbar = (
     <>
-      <li>
+      <li className="font-light text-lg ">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
+      <li className="font-light text-lg ">
         <NavLink to="/allArtCrafts">All Art&Crafts</NavLink>
       </li>
-      <li>
+      <li className="font-light text-lg ">
         <NavLink to="/viewDetails">View Details</NavLink>
       </li>
-      <li>
+      <li className="font-light text-lg ">
         <NavLink to="/myArtCrafts">My Art&Crafts</NavLink>
       </li>
     </>
@@ -33,8 +33,15 @@ const Navbar = () => {
   };
 
   return (
+    
     <div>
-      <div className="navbar bg-base-100">
+      <div className="h-36  bg-[#dedccf]">
+       <span className="text-5xl font-medium flex gap-3 justify-center items-center h-full navbar-font">  
+           <img src="https://i.imgur.com/m6VslS4.png" alt="" className="h-24" />
+             Arts&Crafts </span>
+      </div>
+       <div className="px-4 flex justify-between items-center bg-[#c9b99d] h-18" >
+      <div className="navbar ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -75,7 +82,7 @@ const Navbar = () => {
                 <img
                   src={user.photoURL}
                   alt=""
-                  className="h-8 w-8 rounded-full border border-amber-300"
+                  className="h-16 w-16 rounded-full border border-amber-300"
                 />
               ) : (
                 <div>
@@ -112,6 +119,9 @@ const Navbar = () => {
         </div>
       </div>
     </div>
+    </div>
+
+   
   );
 };
 
