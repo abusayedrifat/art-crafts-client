@@ -1,47 +1,103 @@
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useContext, useEffect, useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+// import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 
 const LogIn = () => {
-    return (
-        <div>
-            <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-    <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company"/>
-    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Sign in to your account</h2>
-  </div>
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  // const { logIn } = useContext(AuthContext);
+  const [showPssword, setShowPasssword] = useState(false);
+  const navigate = useNavigate();
 
-  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form class="space-y-6" action="#" method="POST">
-      <div>
-        <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
-        <div class="mt-2">
-          <input type="email" name="email" id="email" autocomplete="email" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"/>
-        </div>
-      </div>
+  const handleLogIn = (data) => {
+    const { email, password } = data;
 
-      <div>
-        <div class="flex items-center justify-between">
-          <label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
-          <div class="text-sm">
-            <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+    logIn(email, password)
+      .then((result) => {
+        navigate("/");
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  //   useEffect(() => {
+  //     window.scroll(0, 0);
+  //   });
+  return (
+    <div>
+      <div className="flex flex-col justify-center items-center mx-auto ">
+        <h1 className="mt-10 lg:mt-16 mb-6 text-4xl md:text-5xl lg:text-5xl font-bold">
+          Sign In
+        </h1>
+        <form
+          action=""
+          onSubmit={handleSubmit(handleLogIn)}
+          className="flex flex-col gap-5 min-w-[350px] md:w-1/3 lg:w-1/3 px-5 py-10 mx-3 border border-red-600 rounded-xl"
+        >
+          <div>
+            <h2 className="text-lg font-semibold mb-1">Your Email</h2>
+            <input
+              type="email"
+              name="email"
+              {...register("email", { required: true })}
+              placeholder="Enter email"
+              className="input input-bordered input-md w-full "
+            />
+            {errors.email && (
+              <span className="text-red-600">*Please enter your email</span>
+            )}
           </div>
-        </div>
-        <div class="mt-2">
-          <input type="password" name="password" id="password" autocomplete="current-password" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"/>
-        </div>
-      </div>
+          <div>
+            <h2 className="text-lg font-semibold mb-1">Your Password</h2>
+            <div className="flex items-center justify-between relative">
+              <input
+                type={showPssword ? "text" : "password"}
+                name="password"
+                {...register("password", { required: true })}
+                placeholder="Enter password"
+                className="input input-bordered input-md w-full"
+              />
+              <span
+                onClick={() => setShowPasssword(!showPssword)}
+                className="absolute right-4 cursor-pointer text-xl"
+              >
+                {showPssword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
+              </span>
+            </div>
+            {errors.password && (
+              <span className="text-red-600">*Please enter your password</span>
+            )}
+          </div>
+          <label>
+            <input type="checkbox" checked /> Accept our
+            <a href="#" className="italic underline text-blue-500">
+              terms and condition
+            </a>
+          </label>
 
-      <div>
-        <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
+          <input className="btn" type="submit" value={"Log In"} />
+        </form>
+        <p className="font-semibold text-lg">
+          Alraedy have an account? Please{" "}
+          <NavLink
+            to={"/register"}
+            className="text-blue-600 font-semibold text-xl"
+          >
+            Register
+          </NavLink>
+        </p>
       </div>
-    </form>
-
-    <p class="mt-10 text-center text-sm/6 text-gray-500">
-      Not a member?
-      <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Start a 14 day free trial</a>
-    </p>
-  </div>
-</div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default LogIn;

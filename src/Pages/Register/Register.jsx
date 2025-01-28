@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
-// import { AuthContext } from "../../components/AuthProvider/AuthProvider";
+import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 
 const Register = () => {
   const {
@@ -12,7 +12,7 @@ const Register = () => {
     watch,
     formState: { errors },
   } = useForm();
-//   const { createUser } = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
   const [showPssword, handleShowPasssword] = useState(false);
 
   const navigate = useNavigate();
@@ -26,9 +26,8 @@ const Register = () => {
         console.log(result);
         const createdTime = result.user?.metadata?.creationTime
         const user = {createdTime,email}
-        fetch("https://coffee-master-server-psi.vercel.app/users", {
+        fetch("http://localhost:5000/users", {
           method: "POST",
-          mode: "cors",
           headers: {
             "content-type": "application/json",
           },
@@ -36,7 +35,7 @@ const Register = () => {
         })
           .then((res) => res.json())
           .then((result) => console.log(result));
-           navigate("/signIn");
+           navigate("/logIn");
       })
     .catch((error) => {
         console.log(error.message);
