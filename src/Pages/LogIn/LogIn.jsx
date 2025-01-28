@@ -1,9 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext, useEffect, useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-// import { AuthContext } from "../../components/AuthProvider/AuthProvider";
+import { AuthContext } from "../../components/AuthProvider/AuthProvider";
+import { BsGithub } from "react-icons/bs";
 
 const LogIn = () => {
   const {
@@ -12,8 +13,9 @@ const LogIn = () => {
     watch,
     formState: { errors },
   } = useForm();
-  // const { logIn } = useContext(AuthContext);
+  const { logIn ,googleLogIn,gitHubLogIn } = useContext(AuthContext);
   const [showPssword, setShowPasssword] = useState(false);
+  const location = useLocation()
   const navigate = useNavigate();
 
   const handleLogIn = (data) => {
@@ -29,6 +31,33 @@ const LogIn = () => {
       });
   };
 
+  const handleGoogleLogIn=(e)=>{
+    e.preventDefault();
+
+    googleLogIn()
+    .then(result=>{
+      navigate(location?.state?location.state : "/");
+      console.log(result);
+    })
+    .catch(error=>{
+      console.log(error.message);
+      
+    })
+  }
+    const handleGitHublogIn =(e)=>{
+      e.preventDefault();
+      
+      gitHubLogIn()
+      .then(result=>{
+        navigate(location?.state?location.state : "/");
+        console.log(result);
+      })
+      .catch(error=>{
+        console.log(error.message);
+        
+      })
+    }
+  
   //   useEffect(() => {
   //     window.scroll(0, 0);
   //   });
@@ -95,6 +124,20 @@ const LogIn = () => {
             Register
           </NavLink>
         </p>
+
+
+      <div className="min-w-[350px] space-y-4 md:w-1/3 lg:w-1/3 py-16">
+
+        <button onClick={handleGoogleLogIn} className=" w-full flex gap-5 btn items-center text-lg font-normal ">
+            <FaGoogle className="text-2xl"></FaGoogle>
+            <span>Google LogIn</span> 
+        </button>
+        <button onClick={handleGitHublogIn} className="w-full flex gap-5 btn items-center text-lg font-normal">
+          <BsGithub className="text-2xl"></BsGithub>
+          <span>GitHub LogIn</span> 
+        </button>
+      </div>
+        
       </div>
     </div>
   );

@@ -19,13 +19,13 @@ const Register = () => {
 
   const handleRegister = (data) => {
 
-    const { email, password } = data;
+    const { email, password ,name, photoURL} = data;
 
     createUser(email, password)
     .then((result) => {
         console.log(result);
         const createdTime = result.user?.metadata?.creationTime
-        const user = {createdTime,email}
+        const user = {createdTime,email,name}
         fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {
@@ -103,6 +103,19 @@ const Register = () => {
           />
           {errors.email && (
             <span className="text-red-600">*Please enter your email</span>
+          )}
+        </div>
+        <div>
+          <h2 className="text-lg font-semibold mb-1">Your Photo</h2>
+          <input
+            type="text"
+            name="photoURL"
+            {...register("photoURL", { required: true })}
+            placeholder="Enter photoURL"
+            className="input input-bordered input-md w-full "
+          />
+          {errors.photo && (
+            <span className="text-red-600">*Please enter your photoURL</span>
           )}
         </div>
         <div className="flex flex-col">
