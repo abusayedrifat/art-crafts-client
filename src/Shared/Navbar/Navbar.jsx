@@ -35,9 +35,9 @@ const Navbar = () => {
   return (
     
     <div>
-      <div className="h-36  bg-[#dedccf]">
-       <span className="text-5xl font-medium flex gap-3 justify-center items-center h-full navbar-font">  
-           <img src="https://i.imgur.com/m6VslS4.png" alt="" className="h-24" />
+      <div className="h-28 md:h-36  bg-[#dedccf]">
+       <span className=" text-2xl md:text-5xl font-medium flex gap-3 justify-center items-center h-full navbar-font">  
+           <img src="https://i.imgur.com/m6VslS4.png" alt="" className="h-20  md:h-24" />
              Arts&Crafts </span>
       </div>
        <div className="px-4 flex justify-between items-center bg-[#c9b99d] h-18" >
@@ -67,7 +67,7 @@ const Navbar = () => {
               {navbar}
             </ul>
           </div>
-          <p>.</p>
+          <p className="text-[#c9b99d]">.</p>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navbar}</ul>
