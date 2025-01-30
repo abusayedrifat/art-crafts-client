@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { IoIosArrowDown, IoIosArrowDropdown } from "react-icons/io";
 
 const AddCrafts = () => {
   const {
@@ -8,12 +9,30 @@ const AddCrafts = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data,event) => {
+    const form = event.target
+    console.log(data);
+
+    fetch("http://localhost:5000/crafts", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        form.reset();
+        console.log(result);
+      });
+  };
 
   return (
     <div className="flex flex-col gap-5 md:gap-10 justify-center items-center pt-16 mb-52">
-      <h1 className="text-font font-bold text-2xl md:text-4xl md:pt-14">Add your art and crafts</h1>
-      <div className="bg-[#F4F3F0] min-w-[350px] w-2/3 rounded-lg flex flex-col justify-center items-center py-10">
+      <h1 className="text-font font-bold text-2xl md:text-4xl md:pt-14">
+        Add your art and crafts
+      </h1>
+      <div className="bg-[#F4F3F0] min-w-[350px] w-2/3 rounded-lg flex flex-col justify-center items-center py-4">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-3 min-w-[350px] md:w-full  px-7 md:py-4 rounded-xl"
@@ -51,11 +70,29 @@ const AddCrafts = () => {
           <div className="flex flex-col gap-4 md:gap-6 md:flex-row">
             <label className="w-full flex flex-col text-xl font-semibold text-font space-y-1">
               <span>Subcategory Name</span>
-              <input
-                {...register("subcategory", { required: true })}
-                className="input input-bordered input-md w-full font-medium "
-                placeholder="Enter subcategory name"
-              />
+              <div className="flex flex-row-reverse items-center ">
+                {/* <input
+                  {...register("subcategory", { required: true })}
+                  className="input input-bordered input-md w-full font-medium "
+                  placeholder="Enter subcategory name"
+                /> */}
+                  {/* <IoIosArrowDown tabIndex={0} role="button" className="font-light text-3xl relative right-0 cursor-pointer "></IoIosArrowDown> */}                
+              <select 
+              className="input input-bordered input-md w-full font-medium "
+              {...register("subcategory", { required: true })}
+              >
+                <option value="lanscapePainting">lanscape Painting</option>
+                <option value="PortraitDrawing">Portrait Drawing</option>
+                <option value="water color painting">
+                  water color painting
+                </option>
+                <option value="Oil painting">Oil painting</option>
+                <option value="charcoal sketching">charcoal sketching</option>
+                <option value="cartoon drawing">cartoon drawing</option>
+              </select>
+               
+              </div>
+
 
               {errors.subcategory && (
                 <span className="font-normal text-sm text-red-600">
@@ -99,7 +136,7 @@ const AddCrafts = () => {
                 {...register("ratings", { required: true })}
                 type="number"
                 className="input input-bordered input-md w-full font-medium "
-                placeholder="Enter product ratings"
+                placeholder="Enter product ratings(maximum 5.0)"
               />
 
               {errors.ratings && (

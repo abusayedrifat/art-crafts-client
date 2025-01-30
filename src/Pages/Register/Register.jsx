@@ -65,9 +65,9 @@ const Register = () => {
     }
   }
 
-  useEffect(() => {
-    window.scroll(0, 0);
-  });
+  // useEffect(() => {
+  //   window.scroll(0, 0);
+  // });
 
   return (
     <div className="flex flex-col justify-center items-center mx-auto ">
