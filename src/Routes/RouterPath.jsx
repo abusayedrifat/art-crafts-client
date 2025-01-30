@@ -6,6 +6,7 @@ import Register from "../Pages/Register/Register";
 import AllArtCrafts from "../Pages/AllArtCrafts/AllArtCrafts";
 import PrivateRouter from "./PrivateRouter";
 import AddCrafts from "../Pages/AddCrafts/AddCrafts";
+import DetailsPage from "../Pages/DetailsPage/DetailsPage";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
             {
                 path:'/addCrafts',
                 element:<AddCrafts></AddCrafts>
+            },
+            {
+                path:'/crafts/viewDetails/:id',
+                loader:({params})=>fetch(`http://localhost:5000/crafts/${params.id}`),
+                element: <PrivateRouter> <DetailsPage></DetailsPage></PrivateRouter>,
             },
             {
                 path:'/myArtCrafts',

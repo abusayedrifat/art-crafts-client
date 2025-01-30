@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
+import { FaArrowLeft } from "react-icons/fa";
 import { IoIosArrowDown, IoIosArrowDropdown } from "react-icons/io";
-
+import { useNavigate } from "react-router-dom";
 const AddCrafts = () => {
   const {
     register,
@@ -8,6 +9,7 @@ const AddCrafts = () => {
     watch,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate()
 
   const onSubmit = (data,event) => {
     const form = event.target
@@ -27,12 +29,16 @@ const AddCrafts = () => {
       });
   };
 
+
   return (
-    <div className="flex flex-col gap-5 md:gap-10 justify-center items-center pt-16 mb-52">
+    <div className="md:w-[65%] mx-auto">
+      <button onClick={()=>navigate('/')} className="ml-6 mt-5 button flex gap-1 items-center btn"><span> <FaArrowLeft></FaArrowLeft> </span>  Back</button>
+      <div className="flex flex-col gap-5 md:gap-10 justify-center items-center pt-5 px-8 mb-52">
+    
       <h1 className="text-font font-bold text-2xl md:text-4xl md:pt-14">
         Add your art and crafts
       </h1>
-      <div className="bg-[#F4F3F0] min-w-[350px] w-2/3 rounded-lg flex flex-col justify-center items-center py-4">
+      <div className="bg-[#F4F3F0] min-w-[350px] w-full rounded-lg flex flex-col justify-center items-center py-4">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-3 min-w-[350px] md:w-full  px-7 md:py-4 rounded-xl"
@@ -207,11 +213,12 @@ const AddCrafts = () => {
           </label>
           <label className="w-full flex flex-col text-xl font-semibold text-font space-y-1">
             <span>Short Description</span>
-            <input
-              {...register("shortDes", { required: true })}
-              className="input input-bordered input-md w-full font-medium "
-              placeholder="Enter short description"
-            />
+            <textarea
+  placeholder="Enter short description"
+  className="textarea textarea-bordered textarea-lg font-medium w-full "
+  {...register("shortDes", { required: true })}
+  ></textarea>
+           
 
             {errors.shortDes && (
               <span className="font-normal text-sm text-red-600">
@@ -219,10 +226,12 @@ const AddCrafts = () => {
               </span>
             )}
           </label>
-          <input type="submit" className="btn bg-[#c9b99d] mt-14" />
+          <input type="submit" className="btn bg-[#c9b99d] mt-9" />
         </form>
       </div>
     </div>
+    </div>
+    
   );
 };
 

@@ -85,7 +85,7 @@ const Navbar = () => {
                   className="h-16 w-16 rounded-full border border-amber-300"
                 />
               ) : (
-                <div>
+                <div className="flex items-center gap-2 text-[#202020]">
                   <NavLink to="/logIn">
                     <button className="btn">SignIn</button>
                   </NavLink>
