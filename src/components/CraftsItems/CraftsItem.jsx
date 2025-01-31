@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 const CraftsItem = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-center">
+    <div className=" w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-center">
      
-      <div>
+      <div className="w-full">
         <div className=" w-full rounded-t-lg bg-[#dedccf] p-4">
           <img
             src="https://i.imgur.com/VzSWg9x.jpg"
