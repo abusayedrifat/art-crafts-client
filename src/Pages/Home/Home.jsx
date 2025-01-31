@@ -1,8 +1,9 @@
 import { NavLink, useLoaderData } from "react-router-dom";
 import Carousal from "../../components/carousal/Carousal";
-import CraftsItem from "../../components/CraftsItems/CraftsItem";
 import "./home.css";
 import FAQ from "../../components/FAQ/FAQ";
+import CustomerReview from "../../components/Customer review/CustomerReview";
+import CraftsItem from "../../components/CraftsItems/CraftsItem";
 
 const Home = () => {
   const loadCrafts = useLoaderData();
@@ -18,17 +19,20 @@ const Home = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-center gap-5 items-center ">
-          {loadCrafts.map((craftsItem) => (
-            <CraftsItem
-              key={craftsItem._id}
-              craftItem={craftsItem}
-            ></CraftsItem>
-          ))}
-        </div>
+
+        <div className="w-[70%] mx-auto my-24">
+        <h2 className="text-2xl font-bold text-font text-center my-10 md:text-5xl"> Arts & Crafts Category</h2>
+      <div>
+        <CraftsItem></CraftsItem>
+      </div>
+    </div>
+        
         <div className="my-20 w-full">
           <h2 className="text-font text-3xl text-center font-bold py-6 md:py-8 md:text-6xl">FAQ</h2>
           <FAQ></FAQ>
+        </div>
+        <div className="mb-20">
+          <CustomerReview></CustomerReview>
         </div>
       </div>
     </div>

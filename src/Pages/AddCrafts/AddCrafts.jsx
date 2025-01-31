@@ -87,14 +87,14 @@ const AddCrafts = () => {
               className="input input-bordered input-md w-full font-medium "
               {...register("subcategory", { required: true })}
               >
-                <option value="lanscapePainting">lanscape Painting</option>
-                <option value="PortraitDrawing">Portrait Drawing</option>
-                <option value="water color painting">
-                  water color painting
+                <option value="Landscape Painting">Lanscape Painting</option>
+                <option value="Portrait Drawing">Portrait Drawing</option>
+                <option value="Water Color Painting">
+                  Water color Painting
                 </option>
-                <option value="Oil painting">Oil painting</option>
-                <option value="charcoal sketching">charcoal sketching</option>
-                <option value="cartoon drawing">cartoon drawing</option>
+                <option value="Oil Painting">Oil Painting</option>
+                <option value="Charcoal Sketching">Charcoal Sketching</option>
+                <option value="Cartoon Drawing">Cartoon Drawing</option>
               </select>
                
               </div>

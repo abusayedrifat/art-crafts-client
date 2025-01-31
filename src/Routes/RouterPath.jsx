@@ -7,16 +7,24 @@ import AllArtCrafts from "../Pages/AllArtCrafts/AllArtCrafts";
 import PrivateRouter from "./PrivateRouter";
 import AddCrafts from "../Pages/AddCrafts/AddCrafts";
 import DetailsPage from "../Pages/DetailsPage/DetailsPage";
+import ErrorElement from "../ErrorElement";
+import LandscapePainting from "../components/SubCategories/LandscapePainting";
+import OilPainting from "../components/SubCategories/OilPainting";
+import PortraitDrawing from "../components/SubCategories/PortraitDrawing";
+import CharcoaSketching from "../components/SubCategories/CharcoaSketching";
+import WaterColorPainting from "../components/SubCategories/WaterColorPainting";
+import CartoonDrawing from "../components/SubCategories/CartoonDrawing";
 
 const router = createBrowserRouter([
     {
         path:'/',
         element:<Root></Root>,
+        errorElement:<ErrorElement></ErrorElement>,
         children:[
             {
                 path:'/',
-                element:<Home></Home>,
-                loader:()=>fetch('http://localhost:5000/crafts')
+                loader:()=>fetch('http://localhost:5000/crafts'),
+                element:<Home></Home>
             },
             {
                 path:'/logIn',
@@ -30,14 +38,50 @@ const router = createBrowserRouter([
                 path:'/addCrafts',
                 element:<AddCrafts></AddCrafts>
             },
+           
+            {
+                path:'/allArtCrafts',
+                element:<AllArtCrafts></AllArtCrafts>,
+                loader:()=>fetch('http://localhost:5000/crafts')
+            },
             {
                 path:'/crafts/viewDetails/:id',
                 loader:({params})=>fetch(`http://localhost:5000/crafts/${params.id}`),
-                element: <PrivateRouter> <DetailsPage></DetailsPage></PrivateRouter>,
+                element: <PrivateRouter><DetailsPage></DetailsPage></PrivateRouter>,
+            },
+            {
+                path:'/subCategory/LandscapePainting',
+                loader:()=>fetch('http://localhost:5000/category/LandscapePainting'),
+                element:<LandscapePainting></LandscapePainting>
+            },
+            {
+                path:'/subCategory/OilPainting',
+                loader:()=>fetch('http://localhost:5000/category/OilPainting'),
+                element:<OilPainting></OilPainting>
+            },
+            {
+                path:'/subCategory/PortraitDrawing',
+                loader:()=>fetch('http://localhost:5000/category/PortraitDrawing'),
+                element:<PortraitDrawing></PortraitDrawing>
+            },
+            {
+                path:'/subCategory/CharcoaSketching',
+                loader:()=>fetch('http://localhost:5000/category/CharcoaSketching'),
+                element:<CharcoaSketching></CharcoaSketching>
+            },
+            {
+                path:'/subCategory/WaterColorPainting',
+                loader:()=>fetch('http://localhost:5000/category/WaterColorPainting'),
+                element:<WaterColorPainting></WaterColorPainting>
+            },
+            {
+                path:'/subCategory/CartoonDrawing',
+                loader:()=>fetch('http://localhost:5000/category/CartoonDrawing'),
+                element:<CartoonDrawing></CartoonDrawing>
             },
             {
                 path:'/myArtCrafts',
-                element: <PrivateRouter><AllArtCrafts></AllArtCrafts></PrivateRouter>
+                element: <PrivateRouter></PrivateRouter>
             }
         ]
     }
