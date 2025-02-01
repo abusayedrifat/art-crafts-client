@@ -20,14 +20,14 @@ const Home = () => {
         <h3 className="navbar-font text-4xl text-center mt-16">
           Art&Crafts Items
         </h3>
-        <div className=" mt-10 pb-20">
+        <div className=" mt-10 pb-10">
           <button className="btn button">
           <NavLink to="/addCrafts"> Add Art&Craft</NavLink>
             
           </button>
         </div>
 
-        <div className="my-9 md:my-24">
+        <div className="my-9 md:mb-24">
           <h2 className="text-3xl font-extrabold text-font text-center my-14 md:text-5xl">
             Arts & Crafts Category
           </h2>
@@ -42,9 +42,7 @@ const Home = () => {
           </h2>
           <FAQ></FAQ>
         </div>
-        <div className="mb-20">
-          <CustomerReview></CustomerReview>
-        </div>
+        
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
+import Swal from 'sweetalert2'
 
 const Register = () => {
   const {
@@ -35,6 +36,11 @@ const Register = () => {
         })
           .then((res) => res.json())
           .then((result) => console.log(result));
+          Swal.fire({
+            title: "Registered Successfully",
+            icon: "success",
+            draggable: true
+          });
            navigate("/logIn");
       })
     .catch((error) => {
