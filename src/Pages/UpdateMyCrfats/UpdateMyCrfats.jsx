@@ -39,7 +39,7 @@ const UpdateMyCrfats = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/crafts/${loadedData._id}`, {
+          fetch(`https://arts-crafts-server-green.vercel.app/crafts/${loadedData._id}`, {
             method: "PUT",
             headers: {
               "content-type": "application/json",

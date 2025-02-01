@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
+import Swal from 'sweetalert2'
 
 const AddCrafts = () => {
   const user = useContext(AuthContext);
@@ -19,7 +20,7 @@ const AddCrafts = () => {
     const form = event.target;
     console.log(data);
 
-    fetch("http://localhost:5000/crafts", {
+    fetch("https://arts-crafts-server-green.vercel.app/crafts", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -28,6 +29,11 @@ const AddCrafts = () => {
     })
       .then((res) => res.json())
       .then((result) => {
+        Swal.fire({
+          title: "Your Art-Crafts Added successfully",
+          icon: "success",
+          draggable: true
+        });
         form.reset();
         console.log(result);
       });

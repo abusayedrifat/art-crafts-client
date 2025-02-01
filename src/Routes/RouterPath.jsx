@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         children:[
             {
                 path:'/',
-                loader:()=>fetch('http://localhost:5000/crafts'),
+                loader:()=>fetch('https://arts-crafts-server-green.vercel.app/crafts'),
                 element:<Home></Home>
             },
             {
@@ -44,51 +44,51 @@ const router = createBrowserRouter([
             {
                 path:'/allArtCrafts',
                 element:<AllArtCrafts></AllArtCrafts>,
-                loader:()=>fetch('http://localhost:5000/crafts')
+                loader:()=>fetch('https://arts-crafts-server-green.vercel.app/crafts')
             },
             {
                 path:'/crafts/viewDetails/:id',
-                loader:({params})=>fetch(`http://localhost:5000/crafts/${params.id}`),
+                loader:({params})=>fetch(`https://arts-crafts-server-green.vercel.app/crafts/${params.id}`),
                 element: <PrivateRouter><DetailsPage></DetailsPage></PrivateRouter>,
             },
             {
                 path:'/subCategory/LandscapePainting',
-                loader:()=>fetch('http://localhost:5000/category/LandscapePainting'),
+                loader:()=>fetch('https://arts-crafts-server-green.vercel.app/category/LandscapePainting'),
                 element:<LandscapePainting></LandscapePainting>
             },
             {
                 path:'/subCategory/OilPainting',
-                loader:()=>fetch('http://localhost:5000/category/OilPainting'),
+                loader:()=>fetch('https://arts-crafts-server-green.vercel.app/category/OilPainting'),
                 element:<OilPainting></OilPainting>
             },
             {
                 path:'/subCategory/PortraitDrawing',
-                loader:()=>fetch('http://localhost:5000/category/PortraitDrawing'),
+                loader:()=>fetch('https://arts-crafts-server-green.vercel.app/category/PortraitDrawing'),
                 element:<PortraitDrawing></PortraitDrawing>
             },
             {
                 path:'/subCategory/CharcoaSketching',
-                loader:()=>fetch('http://localhost:5000/category/CharcoaSketching'),
+                loader:()=>fetch('https://arts-crafts-server-green.vercel.app/category/CharcoaSketching'),
                 element:<CharcoaSketching></CharcoaSketching>
             },
             {
                 path:'/subCategory/WaterColorPainting',
-                loader:()=>fetch('http://localhost:5000/category/WaterColorPainting'),
+                loader:()=>fetch('https://arts-crafts-server-green.vercel.app/category/WaterColorPainting'),
                 element:<WaterColorPainting></WaterColorPainting>
             },
             {
                 path:'/subCategory/CartoonDrawing',
-                loader:()=>fetch('http://localhost:5000/category/CartoonDrawing'),
+                loader:()=>fetch('https://arts-crafts-server-green.vercel.app/category/CartoonDrawing'),
                 element:<CartoonDrawing></CartoonDrawing>
             },
             {
                 path:'/myArtCrafts/:email',
-                loader:({params})=>fetch(`http://localhost:5000/crafts/specificUser/${params.email}`),
+                loader:({params})=>fetch(`https://arts-crafts-server-green.vercel.app/crafts/specificUser/${params.email}`),
                 element: <PrivateRouter><MyArtsCrafts></MyArtsCrafts></PrivateRouter>,
             },
             {
                 path:'/updateMyCrafts/:id',
-                loader:({params})=>fetch(`http://localhost:5000/crafts/${params.id}`),
+                loader:({params})=>fetch(`https://arts-crafts-server-green.vercel.app/crafts/${params.id}`),
                 element:<UpdateMyCrfats></UpdateMyCrfats>
             }
         ]

@@ -27,7 +27,7 @@ const Register = () => {
         console.log(result);
         const createdTime = result.user?.metadata?.creationTime
         const user = {createdTime,email,name}
-        fetch("http://localhost:5000/users", {
+        fetch("https://arts-crafts-server-green.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

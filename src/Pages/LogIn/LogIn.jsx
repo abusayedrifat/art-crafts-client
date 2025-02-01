@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 import { BsGithub } from "react-icons/bs";
+import Swal from 'sweetalert2'
 
 const LogIn = () => {
   const {
@@ -23,6 +24,11 @@ const LogIn = () => {
 
     logIn(email, password)
       .then((result) => {
+        Swal.fire({
+                    title: "Registered Successfully",
+                    icon: "success",
+                    draggable: true
+                  });
         navigate("/");
         console.log(result);
       })
