@@ -4,21 +4,26 @@ import "./home.css";
 import FAQ from "../../components/FAQ/FAQ";
 import CustomerReview from "../../components/Customer review/CustomerReview";
 import CraftsItem from "../../components/CraftsItems/CraftsItem";
+import { useContext } from "react";
+import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 
 const Home = () => {
-  const loadCrafts = useLoaderData();
+  const {loading} = useContext(AuthContext)
+
+  
+
   return (
     <div className="grid grid-cols-1 justify-center items-center">
       <Carousal></Carousal>
 
       <div className="w-[90%] md:w-[80%] mx-auto flex flex-col justify-center items-center">
-
         <h3 className="navbar-font text-4xl text-center mt-16">
           Art&Crafts Items
         </h3>
         <div className=" mt-10 pb-20">
           <button className="btn button">
-            <NavLink to="/addCrafts"> Add Art&Craft</NavLink>
+          <NavLink to="/addCrafts"> Add Art&Craft</NavLink>
+            
           </button>
         </div>
 

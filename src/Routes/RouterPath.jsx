@@ -14,6 +14,8 @@ import PortraitDrawing from "../components/SubCategories/PortraitDrawing";
 import CharcoaSketching from "../components/SubCategories/CharcoaSketching";
 import WaterColorPainting from "../components/SubCategories/WaterColorPainting";
 import CartoonDrawing from "../components/SubCategories/CartoonDrawing";
+import MyArtsCrafts from "../Pages/MyArtsCrafts/MyArtsCrafts";
+import UpdateMyCrfats from "../Pages/UpdateMyCrfats/UpdateMyCrfats";
 
 const router = createBrowserRouter([
     {
@@ -36,7 +38,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/addCrafts',
-                element:<AddCrafts></AddCrafts>
+                element:<PrivateRouter><AddCrafts></AddCrafts></PrivateRouter> 
             },
            
             {
@@ -80,8 +82,14 @@ const router = createBrowserRouter([
                 element:<CartoonDrawing></CartoonDrawing>
             },
             {
-                path:'/myArtCrafts',
-                element: <PrivateRouter></PrivateRouter>
+                path:'/myArtCrafts/:email',
+                loader:({params})=>fetch(`http://localhost:5000/crafts/specificUser/${params.email}`),
+                element: <PrivateRouter><MyArtsCrafts></MyArtsCrafts></PrivateRouter>,
+            },
+            {
+                path:'/updateMyCrafts/:id',
+                loader:({params})=>fetch(`http://localhost:5000/crafts/${params.id}`),
+                element:<UpdateMyCrfats></UpdateMyCrfats>
             }
         ]
     }

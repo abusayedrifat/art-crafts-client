@@ -1,9 +1,13 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
-import auth from "../../../firebase.config";
 
 const Navbar = () => {
+
+  const { user, logOut } = useContext(AuthContext);
+console.log(user?.email);
+
+  
   const navbar = (
     <>
       <li className="font-light text-lg ">
@@ -16,12 +20,12 @@ const Navbar = () => {
         <NavLink to="/viewDetails">View Details</NavLink>
       </li>
       <li className="font-light text-lg ">
-        <NavLink to="/myArtCrafts">My Art&Crafts</NavLink>
+        <NavLink to={`/myArtCrafts/${user?.email}`}>My Art&Crafts</NavLink>
       </li>
     </>
   );
 
-  const { user, logOut } = useContext(AuthContext);
+  
 
   const handleLogOut = () => {
  
@@ -112,7 +116,7 @@ const Navbar = () => {
                 )}
               </li>
               <li>
-                {user && <NavLink to="/myArtCrafts">My Art&Crafts</NavLink>}
+                {user && <NavLink to={`/myArtCrafts/`}>My Art&Crafts</NavLink>}
               </li>
             </ul>
           </div>

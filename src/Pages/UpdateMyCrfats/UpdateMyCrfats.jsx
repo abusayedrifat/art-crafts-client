@@ -1,11 +1,12 @@
+import Swal from "sweetalert2";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowLeft } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
-
-const AddCrafts = () => {
-  const user = useContext(AuthContext);
+const UpdateMyCrfats = () => {
+  const loadedData = useLoaderData();
+  // console.log(loadedData);
 
   const {
     register,
@@ -19,17 +20,53 @@ const AddCrafts = () => {
     const form = event.target;
     console.log(data);
 
-    fetch("http://localhost:5000/crafts", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn bg-[#4CBB17]",
+        cancelButton: " btn bg-[#fd3939]",
       },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
+      buttonsStyling: true,
+    });
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "if not. Recheck please",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, update it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
       .then((result) => {
-        form.reset();
-        console.log(result);
+        if (result.isConfirmed) {
+          fetch(`http://localhost:5000/crafts/${loadedData._id}`, {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              form.reset();
+              console.log(result);
+            });
+
+          swalWithBootstrapButtons.fire({
+            title: "Updated!",
+            text: "Your file has been Updated.",
+            icon: "success",
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelled",
+            text: "Your craft didn't updated",
+            icon: "error",
+          });
+        }
       });
   };
 
@@ -61,6 +98,7 @@ const AddCrafts = () => {
                   {...register("imgURL", { required: true })}
                   className="input input-bordered input-md w-full font-medium "
                   placeholder="Enter image URL"
+                  defaultValue={loadedData.imgURL}
                 />
 
                 {errors.imgURL && (
@@ -75,6 +113,7 @@ const AddCrafts = () => {
                   {...register("itemName", { required: true })}
                   className="input input-bordered input-md w-full font-medium "
                   placeholder="Enter item name"
+                  defaultValue={loadedData.itemName}
                 />
 
                 {errors.itemName && (
@@ -89,15 +128,16 @@ const AddCrafts = () => {
                 <span>Subcategory Name</span>
                 <div className="flex flex-row-reverse items-center ">
                   {/* <input
-                  {...register("subcategory", { required: true })}
-                  className="input input-bordered input-md w-full font-medium "
-                  placeholder="Enter subcategory name"
-                /> */}
+                        {...register("subcategory", { required: true })}
+                        className="input input-bordered input-md w-full font-medium "
+                        placeholder="Enter subcategory name"
+                      /> */}
                   {/* <IoIosArrowDown tabIndex={0} role="button" className="font-light text-3xl relative right-0 cursor-pointer "></IoIosArrowDown> */}
                   <select
                     className="input input-bordered input-md w-full font-medium "
                     {...register("subcategory", { required: true })}
                   >
+                    <option>-- Select One ---</option>
                     <option value="Landscape Painting">
                       Lanscape Painting
                     </option>
@@ -125,6 +165,7 @@ const AddCrafts = () => {
                   {...register("stockStatus", { required: true })}
                   className="input input-bordered input-md w-full font-medium "
                   placeholder="In stock/Made to order"
+                  defaultValue={loadedData.stockStatus}
                 />
 
                 {errors.stockStatus && (
@@ -141,6 +182,7 @@ const AddCrafts = () => {
                   {...register("price", { required: true })}
                   className="input input-bordered input-md w-full font-medium "
                   placeholder="$ Enter product price"
+                  defaultValue={loadedData.price}
                 />
 
                 {errors.price && (
@@ -156,6 +198,7 @@ const AddCrafts = () => {
                   type="number"
                   className="input input-bordered input-md w-full font-medium "
                   placeholder="Enter product ratings(maximum 5.0)"
+                  defaultValue={loadedData.ratings}
                 />
 
                 {errors.ratings && (
@@ -172,6 +215,7 @@ const AddCrafts = () => {
                   {...register("customization", { required: true })}
                   className="input input-bordered input-md w-full font-medium "
                   placeholder="Yes/No"
+                  defaultValue={loadedData.stockStatus}
                 />
 
                 {errors.customization && (
@@ -186,6 +230,7 @@ const AddCrafts = () => {
                   {...register("processingTime", { required: true })}
                   className="input input-bordered input-md w-full font-medium "
                   placeholder="Enter processing time"
+                  defaultValue={loadedData.processingTime}
                 />
 
                 {errors.processingTime && (
@@ -195,58 +240,13 @@ const AddCrafts = () => {
                 )}
               </label>
             </div>
-            <label className="flex flex-col text-xl font-semibold text-font space-y-1">
-              <span>User Name</span>
-              <input
-                {...register("userName", { required: true })}
-                className="input input-bordered input-md w-full font-medium "
-                placeholder="Enter image URL"
-                defaultValue={user.displayName}
-              />
-
-              {errors.userName && (
-                <span className="font-normal text-sm text-red-600">
-                  This field is required
-                </span>
-              )}
-            </label>
-            <label className="w-full flex flex-col text-xl font-semibold text-font space-y-1">
-              <span>Email</span>
-              <input
-                {...register("email", { required: true })}
-                type="email"
-                className="input input-bordered input-md w-full font-medium "
-                placeholder="example@gmail.com"
-                defaultValue={user.user.email}
-              />
-
-              {errors.email && (
-                <span className="font-normal text-sm text-red-600">
-                  This field is required
-                </span>
-              )}
-            </label>
-            <label className="w-full flex flex-col text-xl font-semibold text-font space-y-1">
-              <span>User uid</span>
-              <input
-                {...register("uid", { required: true })}
-                className="input input-bordered input-md w-full font-medium "
-                placeholder="example@gmail.com"
-                defaultValue={user.user.uid}
-              />
-
-              {errors.uid && (
-                <span className="font-normal text-sm text-red-600">
-                  This field is required
-                </span>
-              )}
-            </label>
             <label className="w-full flex flex-col text-xl font-semibold text-font space-y-1">
               <span>Short Description</span>
               <textarea
-                placeholder="Enter short description"
-                className="textarea textarea-bordered textarea-lg font-medium w-full "
                 {...register("shortDes", { required: true })}
+                className="textarea textarea-bordered textarea-lg font-medium w-full "
+                placeholder="Enter short description"
+                defaultValue={loadedData.shortDes}
               ></textarea>
 
               {errors.shortDes && (
@@ -255,7 +255,11 @@ const AddCrafts = () => {
                 </span>
               )}
             </label>
-            <input type="submit" className="btn bg-[#c9b99d] mt-9" />
+            <input
+              type="submit"
+              value={"Update"}
+              className="btn bg-[#c9b99d] mt-9"
+            />
           </form>
         </div>
       </div>
@@ -263,4 +267,4 @@ const AddCrafts = () => {
   );
 };
 
-export default AddCrafts;
+export default UpdateMyCrfats;
