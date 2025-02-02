@@ -50,7 +50,7 @@ const CartoonDrawing = () => {
                   {craft.processingTime}
                 </div>
                 <Link
-                  to={`http://localhost:5173/crafts/viewDetails/${craft._id}`}
+                  to={`https://art-crafts-application.web.app/crafts/viewDetails/${craft._id}`}
                 >
                   <button className="btn button w-full mt-4">View</button>
                 </Link>

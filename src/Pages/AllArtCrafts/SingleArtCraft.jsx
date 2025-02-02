@@ -28,7 +28,7 @@ const SingleArtCraft = ({ craftItem }) => {
                 {stockStatus}
               </div>
              
-                <Link to={`http://localhost:5173/crafts/viewDetails/${_id}`}> <button className="btn button w-full mt-4"> View </button> </Link>
+                <Link to={`https://art-crafts-application.web.app/crafts/viewDetails/${_id}`}> <button className="btn button w-full mt-4"> View </button> </Link>
             
                
             </div>
