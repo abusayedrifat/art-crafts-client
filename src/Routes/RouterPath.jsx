@@ -67,8 +67,8 @@ const router = createBrowserRouter([
                 element:<PortraitDrawing></PortraitDrawing>
             },
             {
-                path:'/subCategory/CharcoaSketching',
-                loader:()=>fetch('https://arts-crafts-server-green.vercel.app/category/CharcoaSketching'),
+                path:'/subCategory/CharcoalSketching',
+                loader:()=>fetch('https://arts-crafts-server-green.vercel.app/category/CharcoalSketching'),
                 element:<CharcoaSketching></CharcoaSketching>
             },
             {
