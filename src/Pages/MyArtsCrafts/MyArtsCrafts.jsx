@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -63,6 +64,7 @@ const MyArtsCrafts = () => {
 
   return (
     <div className="w-[70%] mx-auto mb-24">
+       <Helmet> <title> A&C | My Art&Crafts </title> </Helmet> 
       <h1 className="my-14 text-font text-3xl md:text-5xl text-center">
         My Arts&Crafts
       </h1>

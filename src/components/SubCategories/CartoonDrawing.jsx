@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData } from "react-router-dom";
 
 const CartoonDrawing = () => {
@@ -11,6 +12,7 @@ const CartoonDrawing = () => {
   
   return (
     <div className="w-[70%] mx-auto mb-24">
+       <Helmet> <title> A&C | Category Catoon </title> </Helmet> 
       <h1 className="my-14 text-font text-3xl md:text-5xl text-center">
         Cartoon Drawings
       </h1>

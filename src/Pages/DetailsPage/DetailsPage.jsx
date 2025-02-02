@@ -2,6 +2,7 @@ import { AiOutlineDollar } from "react-icons/ai";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 const DetailsPage = () => {
   const loadCraftsData = useLoaderData();
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const DetailsPage = () => {
   },[])
   return (
     <div className="w-[75%] mx-auto">
+       <Helmet> <title> A&C | Crafts Details </title> </Helmet> 
       <button
         onClick={() => navigate("/allArtCrafts")}
         className="mt-5 button flex gap-1 items-center btn"

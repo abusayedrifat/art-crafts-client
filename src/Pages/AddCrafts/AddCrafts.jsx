@@ -4,6 +4,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AddCrafts = () => {
   const user = useContext(AuthContext);
@@ -46,6 +47,7 @@ const AddCrafts = () => {
 
   return (
     <div className="md:w-[65%] mx-auto">
+       <Helmet> <title> A&C | Add Crafts </title> </Helmet> 
       <button
         onClick={() => navigate("/")}
         className="ml-6 mt-5 button flex gap-1 items-center btn"

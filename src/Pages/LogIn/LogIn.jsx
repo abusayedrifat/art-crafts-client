@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 import { BsGithub } from "react-icons/bs";
 import Swal from 'sweetalert2'
+import { Helmet } from "react-helmet-async";
 
 const LogIn = () => {
   const {
@@ -70,6 +71,7 @@ const LogIn = () => {
     });
   return (
     <div>
+      <Helmet> <title> A&C | LogIn </title> </Helmet> 
       <div className="flex flex-col justify-center items-center mx-auto ">
         <h1 className="mt-10 lg:mt-16 mb-6 text-4xl md:text-5xl lg:text-5xl font-bold">
           Sign In

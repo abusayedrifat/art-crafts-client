@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import SingleArtCraft from "./SingleArtCraft";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 const AllArtCrafts = () => {
   const loadCrafts = useLoaderData();
@@ -8,9 +9,10 @@ const AllArtCrafts = () => {
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
-  
+
   return (
     <div className="w-[70%] mx-auto my-24">
+       <Helmet> <title> A&C | All A&C </title> </Helmet>
       <h2 className="text-2xl font-bold text-font text-center my-10 md:text-5xl">
         ALL Arts & Crafts
       </h2>

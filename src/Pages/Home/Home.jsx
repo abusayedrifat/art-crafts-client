@@ -6,6 +6,7 @@ import CustomerReview from "../../components/Customer review/CustomerReview";
 import CraftsItem from "../../components/CraftsItems/CraftsItem";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const {loading} = useContext(AuthContext)
@@ -16,6 +17,8 @@ const Home = () => {
 
   return (
     <div className="grid grid-cols-1 justify-center items-center">
+      <Helmet> <title>A&C | Home</title> </Helmet>
+      
       <Carousal></Carousal>
 
       <div className="w-full md:w-[80%] mx-auto flex flex-col justify-center items-center">

@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 import Swal from 'sweetalert2'
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const {
@@ -77,6 +78,7 @@ const Register = () => {
 
   return (
     <div className="flex flex-col justify-center items-center mx-auto ">
+       <Helmet> <title> A&C | Register </title> </Helmet>
       <h1 className="mt-10 lg:mt-16 mb-6 text-4xl md:text-5xl lg:text-5xl font-bold">
         Register Now !
       </h1>

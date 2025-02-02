@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { FaArrowLeft } from "react-icons/fa";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 const UpdateMyCrfats = () => {
   const loadedData = useLoaderData();
   // console.log(loadedData);
@@ -76,6 +77,7 @@ const UpdateMyCrfats = () => {
     
   return (
     <div className="md:w-[65%] mx-auto">
+       <Helmet> <title> A&C | Update My Crafts </title> </Helmet> 
       <button
         onClick={() => navigate("/")}
         className="ml-6 mt-5 button flex gap-1 items-center btn"
