@@ -8,7 +8,7 @@ const CraftsItem = () => {
           <img
             src="https://i.imgur.com/VzSWg9x.jpg"
             alt=""
-            className="h-36 w-full rounded-t-md"
+            className="h-60 w-full rounded-t-md"
           />
         </div>
         <div className="p-3 text-left bg-gray-200 rounded-b-lg w-full">
@@ -23,7 +23,7 @@ const CraftsItem = () => {
           <img
             src="https://i.imgur.com/OewwaLs.jpg"
             alt=""
-            className="h-36 w-full rounded-t-md"
+            className="h-60 w-full rounded-t-md"
           />
         </div>
         <div className="p-3 text-left bg-gray-200 rounded-b-lg w-full">
@@ -38,7 +38,7 @@ const CraftsItem = () => {
           <img
             src="https://i.imgur.com/WtLlLqB.jpg"
             alt=""
-            className="h-36 w-full rounded-t-md"
+            className="h-60 w-full rounded-t-md"
           />
         </div>
         <div className="p-3 text-left bg-gray-200 rounded-b-lg w-full">
@@ -53,7 +53,7 @@ const CraftsItem = () => {
           <img
             src="https://i.imgur.com/etXYXaM.jpg"
             alt=""
-            className="h-36 w-full rounded-t-md"
+            className="h-60 w-full rounded-t-md"
           />
         </div>
         <div className="p-3 text-left bg-gray-200 rounded-b-lg w-full">
@@ -68,7 +68,7 @@ const CraftsItem = () => {
           <img
             src="https://i.imgur.com/PHT62pI.jpg"
             alt=""
-            className="h-36 w-full rounded-t-md"
+            className="h-60 w-full rounded-t-md"
           />
         </div>
         <div className="p-3 text-left bg-gray-200 rounded-b-lg w-full">
@@ -83,7 +83,7 @@ const CraftsItem = () => {
           <img
             src="https://i.imgur.com/KlfCSiM.jpg"
             alt=""
-            className="h-36 w-full rounded-t-md"
+            className="h-60 w-full rounded-t-md"
           />
         </div>
         <div className="p-3 text-left bg-gray-200 rounded-b-lg w-full">

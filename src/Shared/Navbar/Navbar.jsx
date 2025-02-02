@@ -40,10 +40,10 @@ const Navbar = () => {
             alt=""
             className="h-14 md:h-24"
           />
-          Arts&Crafts{" "}
+          Arts&Crafts
         </span>
       </div>
-      <div className="px-4 flex justify-between items-center bg-[#c9b99d] h-18">
+      <div className="flex p justify-between items-center bg-[#c9b99d] h-18">
         <div className="navbar ">
           <div className="navbar-start">
             <div className="dropdown">
