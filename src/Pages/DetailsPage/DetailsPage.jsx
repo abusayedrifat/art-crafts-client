@@ -1,9 +1,14 @@
 import { AiOutlineDollar } from "react-icons/ai";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import { useEffect } from "react";
 const DetailsPage = () => {
   const loadCraftsData = useLoaderData();
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    window.scroll(0,0)
+  },[])
   return (
     <div className="w-[75%] mx-auto">
       <button

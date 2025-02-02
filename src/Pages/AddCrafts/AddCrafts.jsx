@@ -1,9 +1,9 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 const AddCrafts = () => {
   const user = useContext(AuthContext);
@@ -32,12 +32,17 @@ const AddCrafts = () => {
         Swal.fire({
           title: "Your Art-Crafts Added successfully",
           icon: "success",
-          draggable: true
+          draggable: true,
         });
         form.reset();
         console.log(result);
       });
   };
+
+  useEffect(()=>{
+      window.scroll(0,0)
+    },[])
+    
 
   return (
     <div className="md:w-[65%] mx-auto">
@@ -104,6 +109,7 @@ const AddCrafts = () => {
                     className="input input-bordered input-md w-full font-medium "
                     {...register("subcategory", { required: true })}
                   >
+                    <option>-- Select One --</option>
                     <option value="Landscape Painting">
                       Lanscape Painting
                     </option>
@@ -232,21 +238,7 @@ const AddCrafts = () => {
                 </span>
               )}
             </label>
-            <label className="w-full flex flex-col text-xl font-semibold text-font space-y-1">
-              <span>User uid</span>
-              <input
-                {...register("uid", { required: true })}
-                className="input input-bordered input-md w-full font-medium "
-                placeholder="example@gmail.com"
-                defaultValue={user.user.uid}
-              />
 
-              {errors.uid && (
-                <span className="font-normal text-sm text-red-600">
-                  This field is required
-                </span>
-              )}
-            </label>
             <label className="w-full flex flex-col text-xl font-semibold text-font space-y-1">
               <span>Short Description</span>
               <textarea

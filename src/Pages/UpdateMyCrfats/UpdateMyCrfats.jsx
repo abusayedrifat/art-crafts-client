@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowLeft } from "react-icons/fa";
 import { useLoaderData, useNavigate } from "react-router-dom";
@@ -70,6 +70,10 @@ const UpdateMyCrfats = () => {
       });
   };
 
+  useEffect(()=>{
+      window.scroll(0,0)
+    },[])
+    
   return (
     <div className="md:w-[65%] mx-auto">
       <button

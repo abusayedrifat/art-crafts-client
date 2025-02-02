@@ -4,36 +4,30 @@ import "./home.css";
 import FAQ from "../../components/FAQ/FAQ";
 import CustomerReview from "../../components/Customer review/CustomerReview";
 import CraftsItem from "../../components/CraftsItems/CraftsItem";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 
 const Home = () => {
   const {loading} = useContext(AuthContext)
 
-  
+  useEffect(()=>{
+      window.scroll(0,0)
+    },[])
 
   return (
     <div className="grid grid-cols-1 justify-center items-center">
       <Carousal></Carousal>
 
-      <div className="w-[90%] md:w-[80%] mx-auto flex flex-col justify-center items-center">
-        <h3 className="navbar-font text-4xl text-center mt-16">
+      <div className="w-full md:w-[80%] mx-auto flex flex-col justify-center items-center">
+        <h3 className="navbar-font text-4xl text-center my-16 md:pt-14">
           Art&Crafts Items
         </h3>
-        <div className=" mt-10 pb-10">
-          <button className="btn button">
-          <NavLink to="/addCrafts"> Add Art&Craft</NavLink>
-            
-          </button>
-        </div>
-
+       
         <div className="my-9 md:mb-24">
-          <h2 className="text-3xl font-extrabold text-font text-center my-14 md:text-5xl">
-            Arts & Crafts Category
-          </h2>
-          <div className="border">
+          
+         
             <CraftsItem></CraftsItem>
-          </div>
+        
         </div>
 
         <div className="my-10 md:my-20 md:w-[80%]">
@@ -42,7 +36,10 @@ const Home = () => {
           </h2>
           <FAQ></FAQ>
         </div>
-        
+        <div className="mt-10">
+
+        <CustomerReview></CustomerReview>
+        </div>
       </div>
     </div>
   );

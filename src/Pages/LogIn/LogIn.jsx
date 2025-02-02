@@ -14,6 +14,7 @@ const LogIn = () => {
     watch,
     formState: { errors },
   } = useForm();
+
   const { logIn ,googleLogIn,gitHubLogIn } = useContext(AuthContext);
   const [showPssword, setShowPasssword] = useState(false);
   const location = useLocation()
@@ -64,9 +65,9 @@ const LogIn = () => {
       })
     }
   
-  //   useEffect(() => {
-  //     window.scroll(0, 0);
-  //   });
+    useEffect(() => {
+      window.scroll(0, 0);
+    });
   return (
     <div>
       <div className="flex flex-col justify-center items-center mx-auto ">

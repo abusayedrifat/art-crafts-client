@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 const OilPainting = () => {
   const loadcrafts = useLoaderData();
   console.log(loadcrafts);
+
+  useEffect(()=>{
+      window.scroll(0,0)
+    },[]) 
 
   return (
     <div className="w-[70%] mx-auto mb-24">

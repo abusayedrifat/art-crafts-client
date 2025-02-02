@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -56,6 +56,10 @@ const MyArtsCrafts = () => {
         }
       });
   };
+
+  useEffect(()=>{
+      window.scroll(0,0)
+    },[]) 
 
   return (
     <div className="w-[70%] mx-auto mb-24">

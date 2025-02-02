@@ -15,6 +15,7 @@ const Navbar = () => {
       <li className="font-light text-lg ">
         <NavLink to="/allArtCrafts">All Art&Crafts</NavLink>
       </li>
+      <li className="font-light text-lg "><NavLink to="/addCrafts"> Add Art&Craft</NavLink></li>
       <li className="font-light text-lg ">
         <NavLink to="/viewDetails">View Details</NavLink>
       </li>
@@ -33,11 +34,11 @@ const Navbar = () => {
   return (
     <div>
       <div className="h-28 md:h-36  bg-[#dedccf]">
-        <span className=" text-2xl md:text-5xl font-medium flex gap-3 justify-center items-center h-full navbar-font">
+        <span className=" text-2xl md:text-5xl font-medium flex flex-col md:flex-row gap-3 justify-center items-center h-full navbar-font">
           <img
             src="https://i.imgur.com/m6VslS4.png"
             alt=""
-            className="h-20  md:h-24"
+            className="h-14 md:h-24"
           />
           Arts&Crafts{" "}
         </span>
